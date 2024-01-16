@@ -18,4 +18,4 @@ jobs:
     - name: Build test container
       run: |
         docker build . --file Dockerfile-test -t conda-lter-life-test
-        docker run conda-lter-life-test /bin/bash -c "source /venv/bin/activate; Rscript test_climwin.R"
+        docker run conda-lter-life-test /bin/bash -c "source /venv/bin/activate; Rscript install-and-load-the-climwinb-packages-dev-user-name-at-domain-com.R; Rscript consume-climwin-dev-user-name-at-domain-com.R"

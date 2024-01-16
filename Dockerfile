@@ -12,10 +12,15 @@ SHELL ["/bin/bash", "--login", "-c"]
 RUN Rscript --version
 RUN which Rscript
 
-# test packages
-COPY test_climwin.R .
-RUN Rscript test_climwin.R
-RUN rm test_climwin.R
+# test R
+COPY install-and-load-the-climwinb-packages-dev-user-name-at-domain-com.R .
+RUN Rscript install-and-load-the-climwinb-packages-dev-user-name-at-domain-com.R
+RUN rm install-and-load-the-climwinb-packages-dev-user-name-at-domain-com.R
+
+
+COPY consume-climwin-dev-user-name-at-domain-com.R .
+RUN Rscript consume-climwin-dev-user-name-at-domain-com.R
+RUN rm consume-climwin-dev-user-name-at-domain-com.R
 
 
 RUN conda-pack -n venv -o /tmp/env.tar && \

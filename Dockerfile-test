@@ -14,6 +14,6 @@ FROM ubuntu:24.04 as runtime
 
 COPY --from=build /venv/ /venv/
 
-RUN du -sh /venv
 # test climwin
-COPY test_climwin.R .
+COPY install-and-load-the-climwinb-packages-dev-user-name-at-domain-com.R .
+COPY consume-climwin-dev-user-name-at-domain-com.R .
