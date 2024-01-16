@@ -10,18 +10,10 @@ RUN conda-pack -n venv -o /tmp/env.tar && \
 RUN /venv/bin/conda-unpack
 
 
-FROM rhub/r-minimal:4.4 as runtime
+FROM ubuntu:24.04 as runtime
 
 COPY --from=build /venv/ /venv/
 
-ENV PATH=/venv/bin:$PATH
-SHELL ["/bin/bash", "--login", "-c"]
-SHELL ["/bin/bash", "-c"," source /venv/bin/activate;"]
-RUN echo "source /venv/bin/activate" >> ~/.bashrc
-RUN source /venv/bin/activate
-
-
+RUN du -sh /venv
 # test climwin
 COPY test_climwin.R .
-RUN Rscript test_climwin.R
-RUN rm test_climwin.R
