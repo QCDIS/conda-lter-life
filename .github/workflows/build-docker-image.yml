@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Build container
+      run: |
+        docker build . --file Dockerfile -t conda-lter-life
+
     - name: Build test container
       run: |
         docker build . --file Dockerfile-test -t conda-lter-life-test
-        docker run conda-lter-life-test /bin/bash -c "source /venv/bin/activate;"
+        docker run conda-lter-life-test /bin/bash -c "source /venv/bin/activate; Rscript test_climwin.R"
