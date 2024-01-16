@@ -9,6 +9,9 @@ SHELL ["conda", "run", "-n", "venv", "/bin/bash", "-c"]
 RUN echo "conda activate venv" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
 
+RUN Rscript --version
+RUN which Rscript
+
 # test packages
 COPY test_climwin.R .
 RUN Rscript test_climwin.R
