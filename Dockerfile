@@ -1,7 +1,7 @@
 FROM condaforge/mambaforge:23.3.1-1
 
 RUN conda install -c conda-forge conda-merge conda-pack
-RUN wget https://raw.githubusercontent.com/QCDIS/NaaVRE/1031-cant-install-climwin/docker/lter-life/environment.yaml
+RUN wget https://raw.githubusercontent.com/QCDIS/NaaVRE/main/docker/lter-life/environment.yaml
 RUN mamba env create -f environment.yaml
 
 ENV PATH /opt/conda/envs/venv/bin:$PATH
